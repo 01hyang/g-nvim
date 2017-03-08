@@ -11,9 +11,9 @@ function! gitgutter#highlight#define_highlights() abort
 
   " Highlights used by the signs.
 
-  execute "highlight GitGutterAddDefault    guifg=#009900 guibg=" . guibg . " ctermfg=2 ctermbg=" . ctermbg
-  execute "highlight GitGutterChangeDefault guifg=#bbbb00 guibg=" . guibg . " ctermfg=3 ctermbg=" . ctermbg
-  execute "highlight GitGutterDeleteDefault guifg=#ff2222 guibg=" . guibg . " ctermfg=1 ctermbg=" . ctermbg
+  execute "highlight GitGutterAddDefault    guifg=#009900 guibg=" . guibg . " ctermfg=168 ctermbg=" . ctermbg
+  execute "highlight GitGutterChangeDefault guifg=#bbbb00 guibg=" . guibg . " ctermfg=75 ctermbg=" . ctermbg
+  execute "highlight GitGutterDeleteDefault guifg=#ff2222 guibg=" . guibg . " ctermfg=108 ctermbg=" . ctermbg
   highlight default link GitGutterChangeDeleteDefault GitGutterChangeDefault
 
   execute "highlight GitGutterAddInvisible    guifg=bg guibg=" . guibg . " ctermfg=" . ctermbg . " ctermbg=" . ctermbg

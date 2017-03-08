@@ -20,24 +20,24 @@ endif
 if &bg == "dark"
  highlight SignColor ctermfg=white ctermbg=blue guifg=white guibg=RoyalBlue3
 else
- highlight SignColor ctermbg=white ctermfg=blue guibg=grey guifg=RoyalBlue3
+ highlight SignColor ctermbg=grey ctermfg=black guibg=grey guifg=RoyalBlue3
 endif
 
 " ---------------------------------------------------------------------
 "  Public Interface:
 if !hasmapto('<Plug>Vm_toggle_sign')
   map <unique> <c-F2> <Plug>Vm_toggle_sign
-  map <silent> <unique> mm <Plug>Vm_toggle_sign 
+  map <silent> <unique> <leader>mm <Plug>Vm_toggle_sign 
 endif
 nnoremap <silent> <script> <Plug>Vm_toggle_sign	:call Vm_toggle_sign()<cr>
 
 if !hasmapto('<Plug>Vm_goto_next_sign')
-  map <unique> <F2> <Plug>Vm_goto_next_sign
+  map <unique> <F4> <Plug>Vm_goto_next_sign
 endif
 nnoremap <silent> <script> <Plug>Vm_goto_next_sign	:call Vm_goto_next_sign()<cr>
 
 if !hasmapto('<Plug>Vm_goto_prev_sign')
-  map <unique> <s-F2> <Plug>Vm_goto_prev_sign
+  map <unique> <F3> <Plug>Vm_goto_prev_sign
 endif
 nnoremap <silent> <script> <Plug>Vm_goto_prev_sign	:call Vm_goto_prev_sign()<cr>
 
@@ -52,7 +52,7 @@ fun! s:GetVimCmdOutput(cmd)
   let old_lang = v:lang
 
   " Set the language to English
-  exec ":lan mes en_US"
+  exec ":lan mes en_US.UTF-8"
 
   let v:errmsg = ''
   let output   = ''
