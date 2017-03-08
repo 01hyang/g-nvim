@@ -8,13 +8,6 @@
 "
 
 
-" For pathogen.vim: auto load all plugins in .vim/bundle {{{
-"<--call pathogen#runtime_append_all_bundles()
-"<--call pathogen#infect()
-"<--call pathogen#helptags()
-" }}}
-
-
 " Launch vim and run :PluginInstall
 " To install from command line: vim +PluginInstall +qall {{{
 set nocompatible				" be iMproved, required
@@ -22,55 +15,68 @@ filetype off					" required
 								" http://stackoverflow.com/questions/14642956/why-vundle-requires-filetype-off
 								" necessary to make ftdetect work on Linux
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+"-" set the runtime path to include Vundle and initialize
+"-set rtp+=~/.vim/bundle/Vundle.vim
+"-call vundle#begin()
+"-" alternatively, pass a path where Vundle should install plugins
+"-"call vundle#begin('~/some/path/here')
+"-
+"-" let Vundle manage Vundle, required
+"-Plug 'VundleVim/Vundle.vim'
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+
+" https://github.com/junegunn/vim-plug
+" https://github.com/TimothyYe/mydotfiles/blob/master/neovim/.config/nvim/init.vim
+" https://www.reddit.com/r/neovim/comments/3z6c2i/how_does_one_install_vimplug_for_neovim/
+" auto-install vim-plug
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync " | source $MYVIMRC
+endif
+call plug#begin('~/.config/nvim/plugged')
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
+"Plug 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
+"Plug 'L9'
 " Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
+"Plug 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
+"Plug 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+"Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
-"Plugin 'ascenator/L9', {'name': 'newL9'}
-Plugin 'https://github.com/scrooloose/nerdtree.git'
-Plugin 'https://github.com/luochen1990/rainbow.git'
-Plugin 'https://github.com/majutsushi/tagbar.git'
-Plugin 'https://github.com/wesleyche/SrcExpl.git'
-"Plugin 'https://github.com/ervandew/supertab.git'
-Plugin 'https://github.com/mileszs/ack.vim.git'
-Plugin 'https://github.com/Valloric/YouCompleteMe.git'
-Plugin 'https://github.com/vasconcelloslf/vim-interestingwords.git'
-Plugin 'https://github.com/bling/vim-airline.git'
-Plugin 'https://github.com/powerline/fonts.git'
-Plugin 'https://github.com/kien/ctrlp.vim.git'
-Plugin 'https://github.com/vim-scripts/Visual-Mark.git'
-Plugin 'https://github.com/easymotion/vim-easymotion.git'
-Plugin 'https://github.com/Yggdroot/indentLine.git'
-Plugin 'https://github.com/terryma/vim-expand-region'
-Plugin 'https://github.com/terryma/vim-multiple-cursors.git'
-Plugin 'https://github.com/airblade/vim-gitgutter.git'
-"Plugin 'https://github.com/scrooloose/syntastic.git'
-Plugin 'MattesGroeger/vim-bookmarks'
-Plugin 'fatih/vim-go'
+"Plug 'ascenator/L9', {'name': 'newL9'}
+Plug 'https://github.com/scrooloose/nerdtree.git'
+Plug 'https://github.com/luochen1990/rainbow.git'
+Plug 'https://github.com/majutsushi/tagbar.git'
+Plug 'https://github.com/wesleyche/SrcExpl.git'
+"Plug 'https://github.com/ervandew/supertab.git'
+Plug 'https://github.com/mileszs/ack.vim.git'
+Plug 'https://github.com/Valloric/YouCompleteMe.git'
+Plug 'https://github.com/vasconcelloslf/vim-interestingwords.git'
+Plug 'https://github.com/bling/vim-airline.git'
+Plug 'https://github.com/powerline/fonts.git'
+Plug 'https://github.com/kien/ctrlp.vim.git'
+Plug 'https://github.com/vim-scripts/Visual-Mark.git'
+Plug 'https://github.com/easymotion/vim-easymotion.git'
+Plug 'https://github.com/Yggdroot/indentLine.git'
+Plug 'https://github.com/terryma/vim-expand-region'
+Plug 'https://github.com/terryma/vim-multiple-cursors.git'
+Plug 'https://github.com/airblade/vim-gitgutter.git'
+"Plug 'https://github.com/scrooloose/syntastic.git'
+Plug 'MattesGroeger/vim-bookmarks'
+Plug 'fatih/vim-go'
+
+call plug#end()
 
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+"-" All of your Plugins must be added before the following line
+"-call vundle#end()            " required
 "filetype plugin indent on   " required
 " To ignore plugin indent changes, instead use:
 filetype on
@@ -184,7 +190,7 @@ au FileType Makefile set noexpandtab
 set laststatus=2
 set statusline=\ %{HasPaste()}%<%-15.25(%f%)%m%r%h\ %w\ \
 set statusline+=\ \ \ [%{&ff}/%Y]
-set statusline+=\ \ \ %<%20.30(%{hostname()}ç¿»>:%{CurDir()}%)\
+set statusline+=\ \ \ %<%20.30(%{hostname()}ç¿?:%{CurDir()}%)\
 set statusline+=%=%-10.(%l,%c%V%)\ %p%%/%L
 
 function! CurDir()
@@ -202,11 +208,11 @@ endfunction
 " }}}
 
 " Restore cursor to file position in previous editing session
-set viminfo='10,\"100,:20,%,n~/.viminfo
-au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+"-set viminfo='10,\"100,:20,%,n~/.viminfo
+"-au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
 " Auto reload vimrc when editing it
-autocmd! bufwritepost .vimrc source ~/.vimrc
+"-autocmd! bufwritepost .vimrc source ~/.vimrc
 
 " Runtime syntax/colortest.vim
 highlight Pmenu			guibg=brown			gui=bold
@@ -763,27 +769,27 @@ if !exists('g:airline_symbols')
 endif
 
 " unicode symbols
-let g:airline_left_sep = 'Â»'
-let g:airline_left_sep = 'â–¶'
-let g:airline_right_sep = 'Â«'
-let g:airline_right_sep = 'â—€'
-let g:airline_symbols.linenr = 'âŠ'
-let g:airline_symbols.linenr = 'â¤'
-let g:airline_symbols.linenr = 'Â¶'
-let g:airline_symbols.branch = 'âŽ‡'
-let g:airline_symbols.paste = 'Ï'
-let g:airline_symbols.paste = 'Ãž'
-let g:airline_symbols.paste = 'âˆ¥'
-let g:airline_symbols.whitespace = 'Îž'
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '¿'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '¿'
+let g:airline_symbols.linenr = '¿'
+let g:airline_symbols.linenr = '¿'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '¿'
+let g:airline_symbols.paste = '¿'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '¿'
+let g:airline_symbols.whitespace = '¿'
 
 " airline symbols
-let g:airline_left_sep = 'î‚°'
-let g:airline_left_alt_sep = 'î‚±'
-let g:airline_right_sep = 'î‚²'
-let g:airline_right_alt_sep = 'î‚³'
-let g:airline_symbols.branch = 'î‚ '
-let g:airline_symbols.readonly = 'î‚¢'
-let g:airline_symbols.linenr = 'î‚¡'
+let g:airline_left_sep = '¿'
+let g:airline_left_alt_sep = '¿'
+let g:airline_right_sep = '¿'
+let g:airline_right_alt_sep = '¿'
+let g:airline_symbols.branch = '¿'
+let g:airline_symbols.readonly = '¿'
+let g:airline_symbols.linenr = '¿'
 
 " switch buffers
 "function! SwitchToNextBuffer(incr)
