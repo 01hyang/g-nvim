@@ -58,6 +58,7 @@ Plug 'https://github.com/wesleyche/SrcExpl.git'
 "Plug 'https://github.com/ervandew/supertab.git'
 Plug 'https://github.com/mileszs/ack.vim.git'
 Plug 'https://github.com/Valloric/YouCompleteMe.git'
+"Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'https://github.com/vasconcelloslf/vim-interestingwords.git'
 Plug 'https://github.com/bling/vim-airline.git'
 Plug 'vim-airline/vim-airline-themes'
@@ -72,6 +73,7 @@ Plug 'https://github.com/airblade/vim-gitgutter.git'
 "Plug 'https://github.com/scrooloose/syntastic.git'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'fatih/vim-go'
+"Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 call plug#end()
 
@@ -740,7 +742,7 @@ nnoremap <leader>g  :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<c
 
 " ------- InsterestingWords {{{
 let g:interestingWordsRandomiseColors = 0
-let g:interestingWordsTermColors = ['154', '121', '211', '137', '214', '228']
+let g:interestingWordsTermColors = ['011', '214', '075', '099', '219', '154', '085', '137', '207', '014', '033', '252']
 
 "nnoremap <silent> <leader>m :call InterestingWords('n')<cr>
 "nnoremap <silent> <leader>M :call UncolorAllWords()<cr>
