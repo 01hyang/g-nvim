@@ -3,7 +3,7 @@
    hi FoldColumn    ctermfg=cyan	    ctermbg=black
    hi Folded        ctermfg=7 ctermbg=4
    hi SpecialKey     term=bold  cterm=bold  ctermfg=4
-   hi NonText        term=bold  cterm=bold  ctermfg=4
+   hi NonText        term=bold  cterm=bold  ctermfg=0
    hi Directory      term=bold  cterm=bold  ctermfg=6
    hi ErrorMsg       term=standout  cterm=bold  ctermfg=7  ctermbg=1
    hi IncSearch      term=reverse  cterm=reverse
