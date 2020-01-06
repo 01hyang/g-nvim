@@ -919,3 +919,8 @@ let g:multi_cursor_quit_key='<Esc>'
 let g:bookmark_sign = '>>'
 let g:bookmark_annotation_sign = '##'
 " }}}
+
+
+" ------- vim-go {{{
+let g:go_version_warning = 0
+" }}}
